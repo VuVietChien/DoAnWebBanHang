@@ -46,7 +46,6 @@
 
             <div class="card-tools">
                 <a href="/admin/news/add" class="btn btn-primary">Thêm Mới</a>
-                <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
             </div>
         </div>
         <div class="card-body">
@@ -71,14 +70,13 @@
             </div>
             <table class="table table-bordered">
                 <thead>
-                <th><input type="checkbox" id="SelectAll" /></th>
-                <th>STT</th>
-                <th>Hình Ảnh</th>
-                <th>Tiêu Đề</th>
-                <th>Ngày Tạo</th>
-                <th>Trạng Thái</th>
-                <th>Hành Động</th>
-                <th></th>
+                <th class="text-center"><input type="checkbox" id="SelectAll" /></th>
+                <th class="text-center">STT</th>
+                <th class="text-center">Hình Ảnh</th>
+                <th class="text-center">Tiêu Đề</th>
+                <th class="text-center">Ngày Tạo</th>
+                <th class="text-center">Trạng Thái</th>
+                <th class="text-center">Hành Động</th>
                 </thead>
 
                 <tbody>
@@ -91,17 +89,17 @@
                             var strCkeck = @item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
 
                             <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                                <td class="text-center"><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
 
-                                <td>@i</td>
+                                <td class="text-center">@i</td>
                                 <td class="text-center"><img src="@item.Image" alt="chưa có ảnh" style="width : 50px" /></td>
-                                <td>@item.Title</td>
+                                <td class="text-center">@item.Title</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td class="text-center">
                                     <a class="btnActive" href="#" data-check="@item.Id">@Html.Raw(strCkeck)</a>
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     <a href="/admin/news/edit/@item.Id" class="btn btn-warning">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btn-danger btnDelete">Xóa</a>
                                 </td>

@@ -119,3 +119,8 @@ D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\bin\PagedList.xml
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\bin\PagedList.Mvc.xml
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.csprojAssemblyReference.cache
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updatedatabae.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.Update1807.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.Update1708.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.dt.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.update.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updateproduct.resources

@@ -15,10 +15,11 @@
             <a href="/admin/home/index" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/news/index" class="nav-link">@ViewBag.Title</a>
+            <a href="/admin/products/index" class="nav-link">@ViewBag.Title</a>
         </li>
     </ul>
 }
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 <section class="content-header">
     <div class="container-fluid">
@@ -77,9 +78,10 @@
                 <th>Số Lượng</th>
                 <th>Giá</th>
                 <th>Ngày Tạo</th>
+                <th>isHome</th>
+                <th>isSale</th>
                 <th>Hiển Thị</th>
                 <th>Hành Động</th>
-                <th></th>
                 </thead>
 
                 <tbody>
@@ -89,26 +91,45 @@
                         var i = ((ViewBag.page - 1) * ViewBag.pageSize) + 1;
                         foreach (var item in Model)
                         {
+                            var img = "";
+                            if(item.ProductImage.Count==0)
+                            {
+                                img = "#";
+                            }
+                            else
+                            {
+                                img = item.ProductImage.FirstOrDefault(x => x.IsDefault).Image;
+
+                            }
                             var strCkeck = @item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
+                            var strCkeckSale = @item.IsSale ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
+                            var strCheckHome = @item.IsHome ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
 
-                            <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                    <tr id="trow_@item.Id">
+                        
+                        <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                        <td>@i</td> 
+                        <td class="text-center"><img class="imgproduct" data-id="@item.Id" src="@img" style="width : 50px" /></td>
+                        <td>@item.Title</td>
+                        <td>@item.Quantity</td> 
+                        <td>@item.Price</td>
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
 
-                                <td>@i</td>
-                                <td><img src="@item.Image" style="width : 50px" /></td>
-                                <td>@item.Title</td>
-                                <td>@item.Quantity</td>
-                                <td>@item.Price</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td class="text-center">
-                                    <a class="btnActive" href="#" data-check="@item.Id">@Html.Raw(strCkeck)</a>
-                                </td>
+                        <td class="text-center">
+                            <a class="btnHome" href="#" data-check1="@item.Id">@Html.Raw(strCheckHome)</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btnSale" href="#" data-check2="@item.Id">@Html.Raw(strCkeckSale)</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btnActive" href="#" data-check="@item.Id">@Html.Raw(strCkeck)</a>
+                        </td>
 
-                                <td>
-                                    <a href="/admin/products/edit/@item.Id" class="btn btn-warning">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-danger btnDelete">Xóa</a>
-                                </td>
-                            </tr>
+                        <td>
+                            <a href="/admin/products/edit/@item.Id" class="btn btn-warning">Sửa</a>
+                            <a href="#" data-id="@item.Id" class="btn btn-danger btnDelete">Xóa</a>
+                        </td>
+                    </tr>
                             i++;
                         }
 
@@ -137,12 +158,38 @@
     <!-- /.card -->
 
 </section>
-
+<div id="dialog">
+    <iframe id="myIframe" style="border: 0 ; width:100%; height:100%;"></iframe>
+</div>
 
 @section scripts{
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
 
         $(document).ready(function () {
+            //hiển thị form upload ảnh
+            $("#dialog").dialog({
+                autoOpen: false,
+                show: "fade",
+                hide: "fade",
+                modal: true,
+                height: '600',
+                width: '700',
+                resizable: true,
+                title: "Quản lý ảnh sản phẩm",
+                close: function () {
+                    window.location.reload();
+                }
+            });
+
+            $("body").on("click",".imgproduct", function () {
+                var proid = $(this).attr("data-id");
+                $("#dialog #myIframe").attr("src", "/admin/ProductImage/Index?id=" + proid + "");
+                $("#dialog").dialog('open');
+                return false;
+            });
+
+
             //delete All News
             $('body').on('click', '#BtnDeleteAll', function (e) {
                 e.preventDefault();
@@ -236,6 +283,54 @@
                         debugger;
                         if (rs.success) {
                             if (rs.isActive) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                            }
+                            else {
+
+                                btn.html("<i class='fa fa-times text-danger'></i>");
+                            }
+                        }
+                    }
+                })
+            });
+
+            $('body').on('click', '.btnHome', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = $(this).data('check1');
+
+                $.ajax({
+                    url: '/admin/products/IsHome',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        debugger;
+                        if (rs.success) {
+                            if (rs.isHome) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                            }
+                            else {
+
+                                btn.html("<i class='fa fa-times text-danger'></i>");
+                            }
+                        }
+                    }
+                })
+            });
+
+            $('body').on('click', '.btnSale', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = $(this).data('check2');
+
+                $.ajax({
+                    url: '/admin/products/IsSale',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        debugger;
+                        if (rs.success) {
+                            if (rs.isSale) {
                                 btn.html("<i class='fa fa-check text-success'></i>");
                             }
                             else {

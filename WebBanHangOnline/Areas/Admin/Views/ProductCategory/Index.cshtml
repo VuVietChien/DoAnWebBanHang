@@ -46,7 +46,6 @@
 
             <div class="card-tools">
                 <a href="/admin/productcategory/add" class="btn btn-primary">Thêm Mới</a>
-                <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
             </div>
         </div>
         <div class="card-body">
@@ -70,12 +69,11 @@
             </div>
             <table class="table table-bordered">
                 <thead>
-                <th><input type="checkbox" id="SelectAll" /></th>
-                <th>STT</th>
-                <th>Tiêu Đề</th>
-                <th>Ngày Tạo</th>
+                <th class="text-center"><input type="checkbox" id="SelectAll" /></th>
+                <th class="text-center">STT</th>
+                <th class="text-center">Tiêu Đề</th>
+                <th class="text-center">Ngày Tạo</th>
                 <th class="text-center">Hành Động</th>
-                <th></th>
                 </thead>
 
                 <tbody>
@@ -87,13 +85,13 @@
 
                             <tr id="trow_@item.Id">
                                 
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
-                                <td>@index</td>
-                                <td>@item.Title</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                <td class="text-center"><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                                <td class="text-center">@index</td>
+                                <td class="text-center">@item.Title</td>
+                                <td class="text-center">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
 
                                 <td class="text-center">
-                                    <a href="/admin/productCategory/edit/@item.Id" class="btn btn-warning">Sửa</a>
+                                    <a href="/admin/productcategory/edit/@item.Id" class="btn btn-warning">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btn-danger btnDelete">Xóa</a>
                                 </td>
                             </tr>
@@ -190,7 +188,7 @@
                 var conf = confirm("Bạn có muốn xóa bản ghi này không ?");
                 if (conf === true) {
                     $.ajax({
-                        url: '/admin/posts/delete',
+                        url: '/admin/productcategory/delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (rs) {

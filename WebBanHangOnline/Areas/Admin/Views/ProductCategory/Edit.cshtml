@@ -1,0 +1,125 @@
+﻿
+
+
+@model WebBanHangOnline.Models.EF.ProductCategory
+
+@{
+    ViewBag.Title = "Chỉnh sửa danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home/index" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/productcategory/index" class="nav-link">Tin Tức</a>
+        </li>
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">@ViewBag.Title</a>
+        </li>
+    </ul>
+}
+
+<!-- Main content -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Danh mục sản phẩm</li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Thông tin @ViewBag.Title</h3>
+        </div>
+
+        <div class="bs-stepper-content">
+            <!-- your steps content here -->
+            @using (Html.BeginForm("Edit", "ProductCategory", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken();
+                @Html.ValidationSummary(true)
+
+                <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div class="form-group">
+                        <label for="">Tiêu đề bài viết</label>
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Nhập danh mục sản phẩm" })
+                        @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="">Alias</label>
+                        @Html.TextBoxFor(m => m.Alias, new { @class = "form-control", @placeholder = "Nhập Alias" })
+                        @Html.ValidationMessageFor(m => m.Alias, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="">Mô Tả</label>
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Tiêu đề SEO</label>
+                        @Html.TextAreaFor(m => m.SeoTitle, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Nội dung chi tiết SEO</label>
+                        @Html.TextAreaFor(m => m.SeoDescription, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="">Từ khóa SEO</label>
+                        @Html.TextAreaFor(m => m.SeoKeywords, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <a class="btn btn-danger" href="/admin/productcategory/index">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+    <!-- /.card -->
+
+</section>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('txtDetail', {
+                customConfig: '/content/ckeditor/config.js',
+                extraAllowedContent: 'span',
+            });
+        });
+
+        function BrowseServer(field) {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                document.getElementById(field).value = fileUrl;
+            };
+            finder.popup();
+        }
+    </script>
+}

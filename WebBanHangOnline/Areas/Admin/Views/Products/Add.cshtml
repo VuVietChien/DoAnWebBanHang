@@ -14,7 +14,7 @@
             <a href="/admin/home/index" class="nav-link">Trang Chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/news/index" class="nav-link">Sản Phẩm</a>
+            <a href="/admin/products/index" class="nav-link">Sản Phẩm</a>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
@@ -51,7 +51,7 @@
 
         <div class="row">
             <div class="col-12">
-                @using (Html.BeginForm("Add", "Posts", FormMethod.Post, new { }))
+                @using (Html.BeginForm("Add", "Products", FormMethod.Post, new { }))
                 {
                     @Html.AntiForgeryToken();
                     @Html.ValidationSummary(true)
@@ -90,6 +90,11 @@
                                         @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Danh mục sản phẩm</label>
+                                        @Html.DropDownListFor(m => m.ProductCategoryID, (SelectList)ViewBag.ProductCategory, "-chọn danh mục sản phẩm-", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.ProductCategoryID, null, new { @class = "text-danger" })
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Chi tiết sản phẩm</label>
@@ -109,14 +114,13 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Giá</label>
                                                 @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @placeholder = "Nhập giá sản phẩm" })
-                                                @Html.ValidationMessageFor(m => m.Price, null, new { @class = "text-danger" })
+                                                @*@Html.ValidationMessageFor(m => m.Price, null, new { @class = "text-danger" })*@
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Giá Khuyến Mãi</label>
                                                 @Html.TextBoxFor(m => m.PriceSale, new { @class = "form-control", @placeholder = "Nhập giá khuyến mãi" })
-                                                @Html.ValidationMessageFor(m => m.PriceSale, null, new { @class = "text-danger" })
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +137,7 @@
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
-                                                    @Html.CheckBoxFor(m => m.IsHot, new { @class = "custom-control-input", @id = "IsHotCheckbox"})
+                                                    @Html.CheckBoxFor(m => m.IsHot, new { @class = "custom-control-input", @id = "IsHotCheckbox" })
                                                     <label for="IsHotCheckbox" class="custom-control-label">Hot</label>
                                                 </div>
                                             </div>
@@ -141,7 +145,7 @@
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
-                                                    @Html.CheckBoxFor(m => m.IsFeature, new { @class = "custom-control-input", @id = "IsFeatureCheckbox"})
+                                                    @Html.CheckBoxFor(m => m.IsFeature, new { @class = "custom-control-input", @id = "IsFeatureCheckbox" })
                                                     <label for="IsFeatureCheckbox" class="custom-control-label">Nổi Bật</label>
                                                 </div>
                                             </div>
@@ -150,7 +154,7 @@
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
-                                                    @Html.CheckBoxFor(m => m.IsSale, new { @class = "custom-control-input", @id = "IsSaleCheckbox"})
+                                                    @Html.CheckBoxFor(m => m.IsSale, new { @class = "custom-control-input", @id = "IsSaleCheckbox" })
                                                     <label for="IsSaleCheckbox" class="custom-control-label">Khuyến Mãi</label>
                                                 </div>
                                             </div>
@@ -160,160 +164,65 @@
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="timeline">
                                     <!-- The timeline -->
-                                    <div class="timeline timeline-inverse">
-                                        <!-- timeline time label -->
-                                        <div class="time-label">
-                                            <span class="bg-danger">
-                                                10 Feb. 2014
-                                            </span>
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <input type="button" class="btn btn-primary" value="Tải ảnh" onclick="BrowseServer()" />
                                         </div>
-                                        <!-- /.timeline-label -->
-                                        <!-- timeline item -->
-                                        <div>
-                                            <i class="fas fa-envelope bg-primary"></i>
-
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="far fa-clock"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                                                <div class="timeline-body">
-                                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                                    quora plaxo ideeli hulu weebly balihoo...
-                                                </div>
-                                                <div class="timeline-footer">
-                                                    <a href="#" class="btn btn-primary btn-sm">Read more</a>
-                                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- END timeline item -->
-                                        <!-- timeline item -->
-                                        <div>
-                                            <i class="fas fa-user bg-info"></i>
-
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
-
-                                                <h3 class="timeline-header border-0">
-                                                    <a href="#">Sarah Young</a> accepted your friend request
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <!-- END timeline item -->
-                                        <!-- timeline item -->
-                                        <div>
-                                            <i class="fas fa-comments bg-warning"></i>
-
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
-
-                                                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                                                <div class="timeline-body">
-                                                    Take me to your leader!
-                                                    Switzerland is small and neutral!
-                                                    We are more like Germany, ambitious and misunderstood!
-                                                </div>
-                                                <div class="timeline-footer">
-                                                    <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- END timeline item -->
-                                        <!-- timeline time label -->
-                                        <div class="time-label">
-                                            <span class="bg-success">
-                                                3 Jan. 2014
-                                            </span>
-                                        </div>
-                                        <!-- /.timeline-label -->
-                                        <!-- timeline item -->
-                                        <div>
-                                            <i class="fas fa-camera bg-purple"></i>
-
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
-
-                                                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                                                <div class="timeline-body">
-                                                    <img src="https://placehold.it/150x100" alt="...">
-                                                    <img src="https://placehold.it/150x100" alt="...">
-                                                    <img src="https://placehold.it/150x100" alt="...">
-                                                    <img src="https://placehold.it/150x100" alt="...">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- END timeline item -->
-                                        <div>
-                                            <i class="far fa-clock bg-gray"></i>
+                                        <div class="col-md-12">
+                                            <table class="table table-hover" id="tbAnhSanPham">
+                                                <thead>
+                                                    <tr>
+                                                        <td class="text-center">STT</td>
+                                                        <td class="text-center">Ảnh</td>
+                                                        <td class="text-center">Ảnh đại diện</td>
+                                                        <td class="text-center">Thao tác</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                            <input type="hidden" id="tCurrentId" value="0" />
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /.tab-pane -->
 
                                 <div class="tab-pane" id="settings">
-                                    <form class="form-horizontal">
+                                    <div class="form-horizontal">
                                         <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                            <label for="inputName" class="col-sm-2 col-form-label">Tiêu đề SEO</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                                @Html.TextBoxFor(m => m.SeoTitle, new { @class = "form-control", @placeholder = "nhập tiêu đề SEO" })
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                            <label for="inputName" class="col-sm-2 col-form-label">Từ khóa SEO</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                                @Html.TextBoxFor(m => m.SeoKeywords, new { @class = "form-control", @placeholder = "Từ khóa SEO" })
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                                            <label for="inputName" class="col-sm-2 col-form-label">Mô tả SEO</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                                                @Html.TextBoxFor(m => m.SeoDescription, new { @class = "form-control", @placeholder = "Mô tả SEO" })
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                            <div class="col-sm-10">
-                                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="offset-sm-2 col-sm-10">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
+
+                                    </div>
                                 </div>
                                 <!-- /.tab-pane -->
                             </div>
                             <!-- /.tab-content -->
                         </div><!-- /.card-body -->
                     </div>
-
+                    <div class="col-12 text-center mb-2">
+                        <button type="submit" class="btn btn-success">Thêm mới</button>
+                    </div>
 
                 }
             </div>
             <!-- your steps content here -->
-            
+
 
         </div>
 
@@ -334,9 +243,73 @@
         function BrowseServer(field) {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
-                document.getElementById(field).value = fileUrl;
+                addImageProduct(fileUrl);
             };
             finder.popup();
         }
+
+        function addImageProduct(url) {
+
+            var current = $("#tCurrentId").val();
+            var currentId = parseInt(current) + 1;
+            var str = "";
+            if (currentId == 1) {
+                str += `<tr id = "trow_${currentId}">
+                            <td class="text-center">${currentId}</td>
+                            <td class="text-center"><img width="100px" src="${url}" /> <input type ="hidden" value ="${url}" name = "Images"/></td>
+                            <td class="text-center"><input type="radio" value = "${currentId}" name="rDefault" checked ="checked" /></td>
+                            <td class="text-center"><a href="#" data-id = "${currentId}" class="btn btn-danger btnXoaAnh">Xóa</a></td>
+                        </tr>`
+            }
+            else {
+                str += `<tr id = "trow_${currentId}">
+                            <td class="text-center">${currentId}</td>
+                            <td class="text-center"><img width="100px" src="${url}" /> <input type ="hidden" value = "${url}" name = "Images"/></td>
+                            <td class="text-center"><input type="radio" value = "${currentId}" name="rDefault" /></td>
+                            <td class="text-center"><a href="#" data-id ="${currentId}" class="btn btn-danger btnXoaAnh">Xóa</a></td>
+                        </tr>`
+            }
+
+            $('#tbAnhSanPham').append(str);
+            $("#tCurrentId").val(currentId);
+
+
+            // xoas anh
+
+            $("#tbAnhSanPham tr td a").each(function () {
+                $(this).click(function () {
+                    var conf = confirm("Bạn có muốn xóa ảnh này không ?");
+                    if (conf === true) {
+                        var _id = $(this).data('id');
+                        $("#trow_" + _id).remove();
+                        var current = $("#tCurrentId").val();
+                        var currentId = parseInt(current) - 1;
+                        $("#tCurrentId").val(currentId);
+                    }
+                })
+            })
+
+        };
+
+        //var priceInput = document.getElementById('Price');
+        //var a = document.getElementById('PriceSale');
+
+        //// Áp dụng AutoNumeric cho ô textbox
+        //new AutoNumeric(priceInput, {
+        //    decimalCharacter: '.', // Ký tự phân tách thập phân
+        //    digitGroupSeparator: ',', // Ký tự phân tách hàng nghìn
+        //    decimalPlaces: 0, // Số chữ số sau dấu thập phân
+        //    //currencySymbol: 'VND', // Ký hiệu tiền tệ (nếu cần)
+        //    /*currencySymbolPlacement: 's', // Vị trí ký hiệu tiền tệ (nếu cần)*/
+        //});
+
+        //new AutoNumeric(a, {
+        //    decimalCharacter: '.', // Ký tự phân tách thập phân
+        //    digitGroupSeparator: ',', // Ký tự phân tách hàng nghìn
+        //    decimalPlaces: 0, // Số chữ số sau dấu thập phân
+        //});
+
     </script>
 }
+
+                    

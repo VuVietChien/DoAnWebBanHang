@@ -30,6 +30,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+               
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
                 model.Alias = WebBanHangOnline.Models.Common.Filter.RemoveSign4VietnameseString(model.Title);
@@ -39,5 +40,48 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             }
             return View();
         }
+
+
+        public ActionResult Edit(int Id)
+        {
+            var model = db.ProductCategories.Find(Id);
+            return View(model);
+        }
+
+
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Edit(ProductCategory model)
+        {
+            if(ModelState.IsValid)
+            {
+                db.ProductCategories.Attach(model);
+                model.CreatedDate = DateTime.Now;
+                model.ModifiedDate = DateTime.Now;
+                model.Alias = WebBanHangOnline.Models.Common.Filter.RemoveSign4VietnameseString(model.Title);
+
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("index");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int Id)
+        {
+            var item = db.ProductCategories.Find(Id);
+            if (item != null)
+            {
+                db.ProductCategories.Remove(item);
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            else
+                return Json(new { success = false });
+        }
+
+
+
     }
 }
