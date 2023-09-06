@@ -98,7 +98,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Chi tiết sản phẩm</label>
-                                        @Html.TextAreaFor(m => m.Detail, new { @class = "form-control", @placeholder = "Nhập chi tiết sản phẩm" })
+                                        @Html.TextAreaFor(m => m.Detail, new { @class = "form-control", @placeholder = "Nhập chi tiết sản phẩm", @id = "txtDetail" })
                                         @Html.ValidationMessageFor(m => m.Detail, null, new { @class = "text-danger" })
                                     </div>
 

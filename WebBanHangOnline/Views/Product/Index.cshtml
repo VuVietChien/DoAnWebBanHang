@@ -16,7 +16,7 @@
 
             <div class="breadcrumbs d-flex flex-row align-items-center">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Trang Chủ</a></li>
                     <li class="active"><a href="index.html"><i class="fa fa-angle-right" aria-hidden="true"></i>@ViewBag.CateName</a></li>
                 </ul>
             </div>
@@ -158,7 +158,7 @@
 
                                                 }
                                             <div class="product_info">
-                                                <h6 class="product_name"><a href="@item.Alias">@item.Title</a></h6>
+                                                <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
                                                 @if (item.PriceSale > 0)
                                                 {
                                                     <div class="product_price">@item.PriceSale VND<span>@item.Price VND</span></div>
@@ -173,7 +173,7 @@
 
                                             </div>
                                             </div>
-                                            <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+                                            <div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id">add to cart</a></div>
                                         </div>
                                     }
                                 }

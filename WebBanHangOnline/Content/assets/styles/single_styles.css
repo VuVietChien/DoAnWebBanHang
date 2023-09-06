@@ -932,7 +932,7 @@ section
 .single_product_thumbnails ul li
 {
 	position: relative;
-	height: 136px;
+	height: 100%;
 	margin-bottom: 30px;
 	cursor: pointer;
 }

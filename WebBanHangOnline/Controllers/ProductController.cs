@@ -48,5 +48,11 @@ namespace WebBanHangOnline.Controllers
             var items = db.Products.Where(x => x.IsSale && x.IsActive == true).Take(12).ToList();
             return PartialView(items);
         }
+
+        public ActionResult Detail(string alias, int id)
+        {
+            var item = db.Products.Find(id);
+            return View(item);
+        }
     }
 }

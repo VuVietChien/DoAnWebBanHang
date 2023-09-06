@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
+<table class="table">
+    @if (Model != null && Model.Any())
+    {
+        <tr>
+            <th>STT</th>
+            <th>Ảnh sản phẩm</th>
+            <th>Tên sản phẩm</th>
+            <th>Danh mục</th>
+            <th>Giá</th>
+            <th style="width:100px">Số lượng</th>
+            <th>Thành tiền</th>
+            <th>Hành động</th>
+        </tr>
+        var i = 0;
+        var tongTien = decimal.Zero;
+        foreach (var item in Model)
+        {
+            <tr id="trow_@item.ProductId">
+                <td>@(i+1)</td>
+                <td><img style="width:30px" src="@item.ProductImg" /></td>
+                <td><a href="/chi-tiet/@item.Alias-p@(item.ProductId)">@item.ProductName</a></td>
+                <td>@item.CategoryName</td>
+                <td>@item.Price</td>
+                <td><input class="form-control" value="@item.Quantity" id="Quantity_@item.ProductId" type="number" /></td>
+                <td>@item.TotalPrice</td>
+                <td>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-success btnUpdate">Cập nhật</a>
+                </td>
+            </tr>
+            tongTien += @item.TotalPrice;
+            i++;
+        }
+        <tr>
+            <th colspan="4"></th>
+            <th colspan="2">Tổng tiền :</th>
+            <th>@tongTien</th>
+        </tr>
+        <tr>
+            <th colspan="6"></th>
+            <th><a href="#" class="btn btn-lg btn-danger btnDeleteAll">Xóa tất cả</a></th>
+            <th><a href="/thanh-toan" class="btn btn-lg btn-success">Thanh Toán</a></th>
+        </tr>
+
+    }
+    else
+    {
+        <h3>Chưa có sản phẩm nào trong giỏ hàng !</h3>
+    }
+</table>
