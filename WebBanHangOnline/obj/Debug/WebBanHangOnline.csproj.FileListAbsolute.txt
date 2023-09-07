@@ -124,3 +124,4 @@ D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Mi
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.dt.resources
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.update.resources
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updateproduct.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdatePayment.resources
