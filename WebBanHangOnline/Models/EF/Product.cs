@@ -40,6 +40,7 @@ namespace WebBanHangOnline.Models.EF
         [StringLength(250)]
 
         public string Image { get; set; }
+        public int ViewCount{ get; set; }
         public decimal? Price { get; set; }
         public decimal? PriceSale { get; set; }
         public bool IsHome { get; set; }

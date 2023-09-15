@@ -28,7 +28,7 @@ namespace WebBanHangOnline.Models.EF
 
         public bool IsActive { get; set; }
 
-
+        public int ViewCount { get; set; }
         //liên kết các bảng với nhau
         public virtual Category Category { get; set; }
     }

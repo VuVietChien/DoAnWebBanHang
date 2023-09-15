@@ -1046,6 +1046,7 @@ section
 }
 .product_image img
 {
+	height : 294px;
 	width: 100%;
 }
 .product_info

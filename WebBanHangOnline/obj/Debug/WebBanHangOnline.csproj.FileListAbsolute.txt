@@ -125,3 +125,11 @@ D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Mi
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.update.resources
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updateproduct.resources
 D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdatePayment.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updateviewcount.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.CreatetableThongKe.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.update1.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\bin\Dapper.dll
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\bin\Dapper.xml
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updatesendmail.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updatemail.resources
+D:\DoAnTotNghiep\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.sendmail.resources

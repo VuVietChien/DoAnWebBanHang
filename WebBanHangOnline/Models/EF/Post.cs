@@ -39,7 +39,7 @@ namespace WebBanHangOnline.Models.EF
         public string SeoKeywords { get; set; }
         public bool IsActive { get; set; }
 
-
+        public int ViewCount { get; set; }
         public virtual Category Category { get; set; }
     }
 }

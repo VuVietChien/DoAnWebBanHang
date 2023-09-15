@@ -927,6 +927,7 @@ section
 }
 .single_product_thumbnails
 {
+	overflow: auto;
 	height: 527px;
 }
 .single_product_thumbnails ul li
