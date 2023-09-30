@@ -6,8 +6,10 @@ using System.Web.Mvc;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
+    
     public class HomeController : Controller
     {
+        [Authorize(Roles ="Admin,Employee")]
         // GET: Admin/Home
         public ActionResult Index()
         {

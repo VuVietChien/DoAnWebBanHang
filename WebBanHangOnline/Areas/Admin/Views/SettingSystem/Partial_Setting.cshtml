@@ -1,0 +1,106 @@
+﻿
+@using WebBanHangOnline.Common
+@{ 
+    var Settingtitle = ViewBag.settingTitle;
+    var SettingLogo = ViewBag.settingLogo;
+    var SettingHotline = ViewBag.settingHotline;
+    var SettingEmail = ViewBag.settingEmail;
+    var SettingTitleSeo = ViewBag.settingTitleSeo;
+    var SettingDesSeo = ViewBag.settingDesSeo;
+    var SettingKeySeo = ViewBag.settingKeySeo;
+}
+@using (Ajax.BeginForm("AddSetting", "SettingSystem", new AjaxOptions
+
+{
+    OnBegin = "Onbegin",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}))
+{
+    <script>
+        function OnBegin(rs) {
+            $("#load_page").html("đang lưu ....")
+        }
+
+        function OnSuccess(rs) {
+
+        }
+        function OnFailure(rs) {
+
+        }
+
+    </script>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông Tin Chung</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#settingSeo" data-toggle="tab">SEO</a></li>
+                    </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="activity">
+                            <div class="form-group">
+                                <label>Tiêu đề trang</label>
+                                <input type="text" name="SettingTitle" class="form-control" value="@Settingtitle" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Logo</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="text" name="SettingLogo" value="@SettingLogo" id="SettingLogo" class="form-control" />
+                                    </div>
+                                    <div class="input-group-append">
+                                        <input type="button" value="Tải ảnh" onclick="BrowseServer('SettingLogo');" class="input-group" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Hotline</label>
+                                <input type="text" name="SettingHotline" value="@SettingHotline"  class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="SettingEmail" value="@SettingEmail"  class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="settingSeo">
+                            <div class="form-group">
+                                <label>Tiêu đề SEO</label>
+                                <input type="text" name="SettingTitleSeo" value="@SettingTitleSeo" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Mô tả SEO</label>
+                                @*<input type="text" name="SettingDesSeo" value="@SettingHelper.GetValue("SettingDesSeo")" class="form-control" />*@
+                                <textarea name="SettingDesSeo" class="form-control">@SettingDesSeo</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Từ khóa SEO</label>
+                                @*<input type="text" name="SettingKeySeo" value="@SettingHelper.GetValue("SettingKeySeo")" class="form-control" />*@
+                                <textarea name="SettingKeySeo" class="form-control">@SettingKeySeo</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center mb-2">
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+
+

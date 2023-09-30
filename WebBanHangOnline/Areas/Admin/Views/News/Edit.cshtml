@@ -81,9 +81,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Chi Tiết</label>
-                    @Html.TextBoxFor(m => m.Detail, new { @class = "form-control", @id = "txtDetail" })
-                    @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+                    <label for="">Chi Tiết</label>
+                    @Html.TextAreaFor(m => m.Detail, new { @class = "form-control", @id = "txtDetail" })
                 </div>
 
 

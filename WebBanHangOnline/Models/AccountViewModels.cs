@@ -49,9 +49,8 @@ namespace WebBanHangOnline.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -78,6 +77,36 @@ namespace WebBanHangOnline.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+    }
+
+    public class CreateAccountViewModel
+    {
+
+        [Required( ErrorMessage = "Không được để trống tên tài khoản")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Không được để trống họ và tên")]
+
+        public string FullName { get; set; }
+
+        public string Phone { get; set; }
+        public string Role { get; set; }
+
+        [Required(ErrorMessage = "Không được để Email")]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Không được để trống mật khẩu")]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải dài hơn 6 ký tự", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "Xác nhận mật khẩu không khớp")]
         public string ConfirmPassword { get; set; }
     }
 

@@ -42,6 +42,7 @@ namespace WebBanHangOnline.Models.EF
         public string Image { get; set; }
         public int ViewCount{ get; set; }
         public decimal? Price { get; set; }
+        public decimal  OriginalPrice { get; set; }
         public decimal? PriceSale { get; set; }
         public bool IsHome { get; set; }
         public bool IsHot { get; set; }
@@ -63,6 +64,7 @@ namespace WebBanHangOnline.Models.EF
 
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ICollection<ProductImage> ProductImage { get; set; }
+
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

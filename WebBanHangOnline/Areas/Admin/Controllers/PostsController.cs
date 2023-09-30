@@ -9,8 +9,10 @@ using WebBanHangOnline.Models.EF;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin,Employee")]
     public class PostsController : Controller
     {
+        
         // GET: Admin/Posts
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index(string Searchtext ,int? page)

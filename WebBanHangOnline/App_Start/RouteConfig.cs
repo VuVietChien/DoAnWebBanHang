@@ -45,11 +45,24 @@ namespace WebBanHangOnline
                defaults: new { controller = "Product", action = "Detail", alias = UrlParameter.Optional },
                namespaces: new[] { "WebBanHangOnline.Controllers" }
            );
+            routes.MapRoute(
+              name: "DetailNews",
+              url: "{alias}-n{id}",
+              defaults: new { controller = "News", action = "Detail", alias = UrlParameter.Optional },
+              namespaces: new[] { "WebBanHangOnline.Controllers" }
+          );
+
 
             routes.MapRoute(
                 name: "Products",
                 url: "san-pham",
                 defaults: new { controller = "Product", action = "Index", alias = UrlParameter.Optional },
+                namespaces: new[] { "WebBanHangOnline.Controllers" }
+            );
+            routes.MapRoute(
+                name: "NewsList",
+                url: "tin-tuc",
+                defaults: new { controller = "News", action = "Index", alias = UrlParameter.Optional },
                 namespaces: new[] { "WebBanHangOnline.Controllers" }
             );
 
